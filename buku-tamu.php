@@ -42,7 +42,8 @@ include_once('template/header.php');
                             <td><?= $tamu['no_hp'] ?></td>
                             <td><?= $tamu['bertemu'] ?></td>
                             <td><?= $tamu['kepentingan'] ?></td>
-                            <td><button class="btn btn-succes" type="button">Ubah</button><button class="btn btn-danger" type="button">Hapus</button></td>
+                            <td><button class="btn btn-success" type="button">Ubah</button>
+                                <button class="btn btn-danger" type="button">Hapus</button></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
