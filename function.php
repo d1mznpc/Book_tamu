@@ -1,12 +1,7 @@
 <?php
 //panggil file koneksi.php
 require_once('koneksi.php');
-// jika ada id_tamu di URL
-if (isset($_GET['id'])) {
-    $id_tamu = $_GET['id'];
-    // ambil data tamu  yang sesuai dengan id_tamu
-    $data = query("SELECT * FROM bukutamu WHERE id_tamu = '$id_tamu'")[0];
-}
+
 // membuat query ke / dari database
 function query($query){
     global $koneksi;
@@ -102,6 +97,18 @@ function ubah_user($data)
             username = '$username',
             user_role = '$user_role'
             WHERE id_user = '$kode'";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
+
+// function hapus data tamu
+function hapus_user($id)
+{
+    global $koneksi;
+
+    $query = "DELETE FROM users WHERE id_user = '$id'";
 
     mysqli_query($koneksi, $query);
 
