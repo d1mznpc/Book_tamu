@@ -66,7 +66,7 @@ require_once('function.php');
                     <span>Laporan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="user.php">
+                <a class="nav-link" href="users.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>User</span></a>
             </li>
