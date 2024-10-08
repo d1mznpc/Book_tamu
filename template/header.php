@@ -1,5 +1,11 @@
 <?php
-require_once('function.php');
+// memulai session
+session_start();
+
+// 
+if (!isset($_SESSION['login'])) {
+    header('Location: login.php');
+}
 ?>
 
 
@@ -24,7 +30,7 @@ require_once('function.php');
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
-    
+
     <!-- Custom styles for this page -->
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
@@ -47,8 +53,8 @@ require_once('function.php');
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
+            <hr class="sidebar-divider d-none d-md-block">
+            
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
@@ -70,6 +76,20 @@ require_once('function.php');
                     <i class="fas fa-fw fa-users"></i>
                     <span>User</span></a>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <?php
+            // 
+            if (isset($_SESSION['login'])) :
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">
+                        <i class="fas fa-fw fa-power-off"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
         <!-- End of Sidebar -->
 
@@ -132,11 +152,11 @@ require_once('function.php');
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdo wn" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $username = $_SESSION['username']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="assets/img/profil.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -154,7 +174,7 @@ require_once('function.php');
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
