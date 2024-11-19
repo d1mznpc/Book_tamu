@@ -60,16 +60,16 @@
 <script src="assets/js/demo/datatables-demo.js"></script>
 <script>
     // auto hide notifikasi
-    $(document).ready(function(){
-        window.setTimeout(function(){
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
                 $(this).remove();
             });
         }, 4000);
     });
 
     //ambil data user dari tombol ganti password ke modal ganti password
-    $('#gantiPassword').on('show.bs.modal', function(event){
+    $('#gantiPassword').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
         console.log(id)

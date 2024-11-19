@@ -1,12 +1,6 @@
 <?php
-include_once('template/header.php');
-
-// Jika ada id_user di URL
-if (isset($_GET['id'])) {
-    $id_user = $_GET['id'];
-    // Ambil data user yang sesuai dengan id_user
-    $data = query("SELECT * FROM users WHERE id_user = '$id_user'")[0];
-}
+require_once('function.php');
+include_once('template/header.php')
 ?>
 
 <!-- Begin Page Content -->
@@ -32,7 +26,14 @@ if (isset($_GET['id'])) {
         }
     }
     ?>
-
+    <?php
+    // Jika ada id_user di URL
+    if (isset($_GET['id'])) {
+        $id_user = $_GET['id'];
+        // Ambil data user yang sesuai dengan id_user
+        $data = query("SELECT * FROM users WHERE id_user = '$id_user'")[0];
+    }
+    ?>
     <!-- Konten edit data user -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

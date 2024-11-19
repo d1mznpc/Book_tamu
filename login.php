@@ -24,12 +24,13 @@ if (isset($_POST['login'])) {
             $_SESSION['role'] = $row['user_role'];
 
             // login berhasil
-            header("Location: users.php");
+            header("Location: index.php");
             exit;
         }
     }
     $error = true;
 }
+ 
 ?>
 
 <!DOCTYPE html>
