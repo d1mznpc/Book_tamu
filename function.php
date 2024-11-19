@@ -47,6 +47,15 @@ function ubah_tamu($data)
     $no_hp = htmlspecialchars($data["no_hp"]);
     $bertemu = htmlspecialchars($data["bertemu"]);
     $kepentingan = htmlspecialchars($data["kepentingan"]);
+    $gambarLama = htmlspecialchars($data['gambarLama']);
+
+    if ($_FILES ['gambar']['error'] === 4){
+        $gambar = $gambarLama;
+    } else {
+        $gambar = uploadGambar();
+    }
+
+
 
     $query = "UPDATE bukutamu SET
             nama_tamu = '$nama_tamu',
@@ -54,6 +63,7 @@ function ubah_tamu($data)
             no_hp = '$no_hp',
             bertemu = '$bertemu',
             kepentingan = '$kepentingan'
+            gambar = '$gambar'
             WHERE id_tamu = '$id'";
 
     mysqli_query($koneksi, $query);
